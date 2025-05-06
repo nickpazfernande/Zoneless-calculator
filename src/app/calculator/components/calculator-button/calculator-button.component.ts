@@ -20,7 +20,14 @@ export class CalculatorButtonComponent {
     }
   });
 
-  @HostBinding('class.is-command') get commandStyle() {
-    return this.isCommand();
+  public isEqual = input(false, {
+    transform: (value: boolean | string) => {
+      return typeof value === 'string' ? value === '' : value
+    }
+  });
+
+  @HostBinding('class.w-2/4') get commandStyle() {
+    return this.isEqual();
   }
+
 }
