@@ -1,0 +1,12 @@
+@references "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+button {
+  @apply w-full h-16 outline-none focus:outline-none hover:bg-indigo-700 hover:bg-opacity-20 text-white text-xl font-light
+}
+
+ .is-command {
+  @apply bg-indigo-700 bg-opacity-20
+}
