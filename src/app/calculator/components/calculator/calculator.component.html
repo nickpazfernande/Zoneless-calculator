@@ -8,16 +8,9 @@
 </div>
 <div class="w-full bg-gradient-to-b from-indigo-400 to-indigo-500">
   <div class="flex w-full">
-
-    <!-- <calculator-button (click)="handleClick('C')">C</calculator-button> -->
-    <!-- <calculator-button (click)="handleClick('+/-')">+/-</calculator-button> -->
-
     <calculator-button (onClick)="handleClick($event)">C</calculator-button>
     <calculator-button (onClick)="handleClick($event)">+/-</calculator-button>
-
     <calculator-button (onClick)="handleClick($event)">%</calculator-button>
-    <!--  class=" w-full h-16 outline-none focus:outline-none bg-indigo-700 bg-opacity-10 hover:bg-opacity-20
-      text-white text-2xl font-light" -->
     <calculator-button [isCommand]="true">÷</calculator-button>
   </div>
   <div class="flex w-full">
