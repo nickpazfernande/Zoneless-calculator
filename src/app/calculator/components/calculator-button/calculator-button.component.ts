@@ -7,7 +7,8 @@ import { asNativeElements, Attribute, ChangeDetectionStrategy, Component, Elemen
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'w-1/4 border-r border-b border-indigo-400',
-    '(window:keydown)': 'keyBoardPressedStyle($event)'
+    '(window:keydown)': 'keyBoardPressedStyle($event)',
+    '[class.w-2/4]': 'isEqual()',
 
   },
   styleUrls: ['./calculator-button.component.css'],
@@ -31,10 +32,6 @@ export class CalculatorButtonComponent {
       return typeof value === 'string' ? value === '' : value
     }
   });
-
-  @HostBinding('class.w-2/4') get commandStyle() {
-    return this.isEqual();
-  }
 
   handleClick() {
     if (!this.contentValue()?.nativeElement) {

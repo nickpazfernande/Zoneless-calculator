@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, viewChildren } from '@angular/core';
 import { CalculatorButtonComponent } from "../calculator-button/calculator-button.component";
 
 @Component({
@@ -24,6 +24,9 @@ import { CalculatorButtonComponent } from "../calculator-button/calculator-butto
 
 })
 export class CalculatorComponent {
+  //ViewChild pero en plural, varios elementos
+  //Es una señal para Angular de que queremos acceder a varios elementos hijos
+  public calculatorButtons = viewChildren(CalculatorButtonComponent)
 
 
   handleClick(key: string) {
@@ -31,7 +34,25 @@ export class CalculatorComponent {
   }
 
   handleKeyboardEvent(event: KeyboardEvent) {
-    this.handleClick(event.key);
+    //Equivalencias de teclas
+    const keyEquivalents: Record<string, string> = {
+      'Enter': '=',
+      'Backspace': 'DEL',
+      'c': 'C',
+      'Escape': 'C',
+      '*': 'X',
+      'Clear': 'C',
+      'Delete': 'DEL',
+      '/': '÷',
+    };
+
+    const keyValue = keyEquivalents[event.key] ?? event.key;
+
+    this.handleClick(keyValue);
+
+    this.calculatorButtons().forEach(button => {
+      button.keyBoardPressedStyle(keyValue);
+    });
 
   }
 }
